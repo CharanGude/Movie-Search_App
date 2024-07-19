@@ -43,10 +43,10 @@ const App = () => {
               </>
               }
               {error && 
-              <>
+              <div>
                 <h1>We are Sorry...</h1>
                 <p>{error}</p>
-              </>}
+              </div>}
               {movies && <MovieList movies={movies} /> }
             </div>
         </div>

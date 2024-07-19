@@ -61,6 +61,13 @@
   background-color: red;
 }
 
+.movies-list-body{
+  display: flex;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -82,4 +89,10 @@
 
 .movie-card:hover {
   border: 1px solid black;
+}
+
+@media screen (max-width: 768px) {
+  .movie-card{
+    width: 50vw;
+  }
 }
