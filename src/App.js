@@ -35,7 +35,7 @@ const App = () => {
               </div>
               :
               <>
-                {!error && 
+                {!error && movies.length === 0 &&
                   <div>
                     <h1>Discover Your Next Favorite Film - Fast, Fun, and Effortless Movie Search</h1> 
                   </div>

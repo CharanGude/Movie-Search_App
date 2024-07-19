@@ -1,7 +1,7 @@
 export const fetchMovies = async (query) => {
     const response = await fetch(`https://openlibrary.org/search.json?q=${query}`);
     const data = await response.json();
-    data.docs.sort((a, b) => a.first_publish_year - b.first_publish_year);
+    data.docs.sort((a, b) => b.first_publish_year - a.first_publish_year);
     return data.docs.slice(0,20);
 };
 

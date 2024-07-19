@@ -19,7 +19,7 @@ const MovieCard = ({ movie }) => {
             <h3>{movie.title}</h3>
             {dogImage? <img src={dogImage} alt="Random Dog" />
             :
-            <InfinitySpin color='red' height="100" width="100" />}
+            <InfinitySpin color='red' height="150" width="150" />}
             <p>{movie.author_name ? movie.author_name.join(', ') : 'Unknown Author'}</p>
             <p>{movie.first_publish_year}</p>
         </div>
