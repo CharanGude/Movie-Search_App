@@ -7,7 +7,7 @@ import './App.css';
 const App = () => {
 
     const [apiStatus, setApiStatus] = useState({status:"INITIAL",movies:[],error:null});
-    const [search,setSearch] = useState(' ');
+    const [search,setSearch] = useState('');
     const [request,setRequest] = useState(false)
 
     useEffect(() => {
@@ -66,33 +66,33 @@ const App = () => {
 
     return (
         <div className="App">
-            <SearchBar onSearch={handleSearch} />
-            <div className='movies-list-body'>
+          <SearchBar onSearch={handleSearch} />
+          <div className='movies-list-body'>
 
-              {apiStatus.status === "INITIAL" &&
-                <div>
-                  <h1>Discover Your Next Favorite Film - Fast, Fun, and Effortless Movie Search</h1> 
-                </div>
-              }
+            {apiStatus.status === "INITIAL" &&
+              <div>
+                <h1>Discover Your Next Favorite Film - Fast, Fun, and Effortless Movie Search</h1> 
+              </div>
+            }
 
-              {apiStatus.status === "IN PROGRESS" && 
-                <div className="movies-loader-container">
-                  <FidgetSpinner height="150" width="150" />
-                  <h1>Fetching...</h1>
-                </div>
-              }
+            {apiStatus.status === "IN PROGRESS" && 
+              <div className="movies-loader-container">
+                <FidgetSpinner height="150" width="150" />
+                <h1>Fetching...</h1>
+              </div>
+            }
 
-              {apiStatus.status === "SUCCESS" && 
-                <MovieList movies={apiStatus.movies} />
-              }
+            {apiStatus.status === "SUCCESS" && 
+              <MovieList movies={apiStatus.movies} />
+            }
 
-              {apiStatus.status === "FAILURE" &&
-                <div>
-                  <h1>We are Sorry...</h1>
-                  <p>{apiStatus.error}</p>
-                </div>
-              }
-            </div>
+            {apiStatus.status === "FAILURE" &&
+              <div>
+                <h1>We are Sorry...</h1>
+                <p>{apiStatus.error}</p>
+              </div>
+            }
+          </div>
         </div>
     );
 };
