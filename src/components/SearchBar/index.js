@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
     const [query, setQuery] = useState('');
     
+    useEffect(() => {
+        onSearch(query.trim().toLowerCase());
+    }, [query])
+
+    const handleChange = (e) => {
+        setQuery(e.target.value);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (query.trim()) {
-            onSearch(query.toLowerCase());
-        }
+        onSearch(query.trim().toLowerCase());
     };
 
     return (
@@ -17,7 +22,7 @@ const SearchBar = ({ onSearch }) => {
                 <input
                     type="text"
                     value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={handleChange}
                     placeholder="Search for a movie..."
                     required
                 />

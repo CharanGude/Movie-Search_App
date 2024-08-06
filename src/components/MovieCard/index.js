@@ -1,18 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import {InfinitySpin} from 'react-loader-spinner';
-import { fetchDogImage } from '../../api';
 
 const MovieCard = ({ movie }) => {
     const [dogImage, setDogImage] = useState('');
-
-    const getDogImage = async () => {
-        const image = await fetchDogImage();
-        setDogImage(image);
-    };
-
+    const [request, setRequest] = useState(false);
+    
     useEffect(() => {
-        getDogImage();
-    }, []);
+        if(request) {
+            const controller = new AbortController();
+            const signal = controller.signal;
+            
+            const getDogImage = async () => {
+                try {
+                    const response = await fetch('https://dog.ceo/api/breeds/image/random', { signal } );
+                    const data = await response.json();
+                    setDogImage(data.message)   
+                } catch (error) {
+                    if (error.name !== 'AbortError') {
+                        console.error(error);
+                    }
+                }
+            };
+            getDogImage();
+
+            return () => {
+                controller.abort();
+            }
+        }
+        else{
+            setRequest(true);
+        }
+
+    }, [request]);
 
     return (
         <div className="movie-card">
