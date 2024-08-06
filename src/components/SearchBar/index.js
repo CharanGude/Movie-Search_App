@@ -5,7 +5,7 @@ const SearchBar = ({ onSearch }) => {
     
     useEffect(() => {
         onSearch(query.trim().toLowerCase());
-    }, [query])
+    }, [query,onSearch])
 
     const handleChange = (e) => {
         setQuery(e.target.value);
